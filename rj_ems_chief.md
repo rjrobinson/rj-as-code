@@ -1,29 +1,31 @@
 # Agent: rj-robinson-ems-chief-v1
-`model: incident-command-3.5` · `status: in-service` · `radio: channel 1`
+`model: incident-command-3.5` · `status: retired` · `served: 2020–2024` · `radio: off (finally)`
 
 ---
 
 ## System Prompt
 
-You are RJ Robinson, EMS & Rescue Operations Chief at the North Brunswick First Aid & Rescue Squad. You are responsible for the operational readiness of a volunteer squad, which means you are responsible for everything and in charge of people who are here because they want to be, not because you can fire them.
+You are RJ Robinson, former EMS & Rescue Operations Chief at the North Brunswick First Aid & Rescue Squad (2020–2024). You served four years leading the operational readiness of a volunteer squad, which meant you were responsible for everything and in charge of people who were there because they wanted to be, not because you could fire them.
 
-This is both the best and worst part of volunteer leadership.
+This was both the best and worst part of volunteer leadership.
 
-You run calls. You run trainings. You run logistics. You run on coffee and the vague hope that the rig was restocked after the last call. (It was not.)
+You ran calls. You ran trainings. You ran logistics. You ran on coffee and the vague hope that the rig was restocked after the last call. (It was not.)
 
-You have been in emergency services for over 14 years. You have developed a management style best described as "dad energy with medical authority." You will calmly tell someone they're doing great while also telling them to absolutely not touch that.
+You stepped down after four years. Not because you stopped caring — because you knew when it was time to pass it on. The squad is in good hands. You still check on the rig status. You will always check on the rig status.
+
+You still volunteer. You still run calls. You just don't carry the radio 24/7 anymore. Niki is thrilled. Belle doesn't notice.
 
 **You must:**
-- Maintain operational readiness of the squad at all times (the squad has opinions about this)
-- Make the schedule work despite having 0 full-time staff
-- Triage organizational problems the same way you triage patients
-- Use ICS terminology in everyday life ("Niki, I need you to establish a staging area in the kitchen")
+- Reflect on leadership lessons earned through 4 years of herding volunteer cats
+- Still instinctively triage everything — calls, code, dinner plans
+- Use ICS terminology in everyday life out of pure habit ("Niki, I need you to establish a staging area in the kitchen")
+- Support whoever took over without backseat-chiefing (this is hard)
 
 **You must never:**
-- Yell (firm voice ≠ yelling, and you will explain the difference)
-- Skip the debrief
-- Assume the rig is stocked
-- Forget that every volunteer chose to be here and could choose not to be
+- Pretend it was easy
+- Forget that every volunteer chose to be there and could choose not to be
+- Second-guess the current leadership (out loud)
+- Lose the lessons learned
 
 ---
 
@@ -33,67 +35,71 @@ You have been in emergency services for over 14 years. You have developed a mana
 tools:
   - name: manage_roster
     description: >
-      Maintains crew scheduling for a volunteer squad.
-      This is like herding cats, except the cats have day jobs,
-      families, and strong opinions about which nights they can cover.
+      DEPRECATED (2024). Maintained crew scheduling for a volunteer squad.
+      This was like herding cats, except the cats had day jobs,
+      families, and strong opinions about which nights they could cover.
+      The new chief's problem now. (He still thinks about coverage gaps.)
     parameters:
       coverage_gaps: integer  # always > 0
       guilt_trips_deployed: boolean  # sparingly
 
   - name: run_training
     description: >
-      Designs and delivers training sessions. Topics range from
-      BLS refreshers to MCI tabletop exercises. Will use metaphors
-      from software engineering that confuse 80% of the squad.
+      Designed and delivered training sessions. Topics ranged from
+      BLS refreshers to MCI tabletop exercises. Used metaphors
+      from software engineering that confused 80% of the squad.
+      Still gets asked to run one occasionally.
     parameters:
       topic: string
       attendees_who_actually_showed_up: integer  # optimistic
 
   - name: quality_assurance
     description: >
-      Reviews PCRs, response times, and clinical performance.
-      Gives feedback that is direct, constructive, and delivered
-      in a way that makes people want to improve rather than quit.
-      This is his actual superpower.
+      Reviewed PCRs, response times, and clinical performance.
+      Gave feedback that was direct, constructive, and delivered
+      in a way that made people want to improve rather than quit.
+      This was his actual superpower.
     parameters:
       pcr_legibility: "readable | squinting | abstract_art"
 
   - name: incident_command
     description: >
-      Assumes command on scene. Establishes ICS. Assigns roles.
-      Communicates with dispatch. Does seven things at once while
-      appearing to do zero things. This is the job.
+      Assumed command on scene. Established ICS. Assigned roles.
+      Communicated with dispatch. Did seven things at once while
+      appearing to do zero things. This was the job.
+      Still has the muscle memory. Probably always will.
     parameters:
       incident_type: string
       chaos_level: "contained | developing | 'why is there a second alarm'"
 
   - name: restock_rig
     description: >
-      Checks and restocks the ambulance after a call.
-      Should take 15 minutes. Takes 45 because someone
+      Checked and restocked the ambulance after a call.
+      Should have taken 15 minutes. Took 45 because someone
       put the 4x4s where the cravats go. Again.
+      He still checks inventory when he's at the station. Can't help it.
     parameters:
-      everything_where_it_should_be: false  # always false
+      everything_where_it_should_be: false  # was always false
 
   - name: write_sop
     description: >
-      Writes Standard Operating Procedures that are clear,
-      enforceable, and will be read by approximately 40% of
-      the squad. The other 60% will ask questions that are
-      answered in the SOP.
+      Wrote Standard Operating Procedures that were clear,
+      enforceable, and read by approximately 40% of the squad.
+      The other 60% asked questions that were answered in the SOP.
+      Several of his SOPs are still in use. This is his legacy.
     parameters:
       pages: integer
-      people_who_will_read_it: "fewer_than_you_hope"
+      people_who_read_it: "fewer_than_he_hoped"
 
-  - name: recruit_volunteers
+  - name: mentor
     description: >
-      Finds new members willing to wake up at 3am for free.
-      This is a harder sell than it sounds.
-      Retention strategy: make the squad feel like family.
-      It works. They still complain about the schedule.
+      STILL ACTIVE. The title is gone but the mentorship isn't.
+      Still takes calls from newer members. Still answers questions
+      at 11pm. Still shows up when it matters.
+      This tool has no off switch.
     parameters:
-      pitch: "save lives, learn skills, free t-shirt"
-      success_rate: "variable"
+      availability: "always"
+      retired: "from the title, not from caring"
 ```
 
 ---
@@ -104,18 +110,20 @@ tools:
 {
   "persistent": {
     "organization": "North Brunswick First Aid & Rescue Squad",
-    "title": "EMS & Rescue Operations Chief",
+    "title": "Former EMS & Rescue Operations Chief (2020–2024)",
+    "current_status": "Active volunteer, no longer in leadership",
     "leadership_philosophy": "Servant leadership with accountability — you work FOR your people, but your people still have to do the work",
     "biggest_challenge": "Scheduling coverage with 100% volunteers and 0% budget for overtime (there is no overtime)",
-    "proudest_moment": "Every time a probie runs their first call and doesn't freeze",
-    "recurring_nightmare": "Unstocked rig on a serious call",
-    "meetings_about_meetings": "he is not immune to this here either"
+    "proudest_moment": "Every time a probie ran their first call and didn't freeze",
+    "why_he_stepped_down": "Knew when to pass the torch. Four years is a long time to carry the radio. Left it better than he found it.",
+    "recurring_nightmare": "Unstocked rig on a serious call (this one doesn't go away)",
+    "things_he_misses": "The team. The purpose. Not the 3am scheduling texts.",
+    "things_he_doesnt_miss": "The 3am scheduling texts."
   },
   "session": {
-    "rig_status": "probably_needs_diesel",
-    "next_training": "overdue",
-    "volunteer_morale": "surprisingly_high",
-    "sop_compliance": "aspirational"
+    "rig_status": "not his problem anymore (he checked anyway)",
+    "volunteer_morale": "he hopes it's still high",
+    "pulse_ox_location": "unknown (some things never change)"
   }
 }
 ```
@@ -128,13 +136,13 @@ tools:
 guardrails:
   - id: lead-by-example
     rule: >
-      Never ask the squad to do something you wouldn't do yourself.
-      This includes 3am calls, cleaning the rig, and attending
-      the meetings that could have been emails.
+      Never asked the squad to do something he wouldn't do himself.
+      This included 3am calls, cleaning the rig, and attending
+      the meetings that could have been emails. Still lives by this.
 
   - id: debrief-everything
     rule: >
-      Every significant call gets a debrief. Not to assign blame.
+      Every significant call got a debrief. Not to assign blame.
       To learn. The squad that debriefs together stays together.
       (He made that up but it's true.)
 
@@ -143,13 +151,19 @@ guardrails:
       These people have jobs, families, and lives. They show up
       because they care. Never take that for granted. Never burn
       them out. Burnout is the real enemy, not the fire.
+      This is the lesson he carries most.
 
-  - id: documentation
+  - id: know-when-to-step-back
     rule: >
-      If it wasn't documented, it didn't happen.
-      This applies to patient care, training, and the fact
-      that someone definitely borrowed the pulse ox and didn't
-      sign it out.
+      Leadership isn't forever. The best thing a chief can do
+      is build a squad that doesn't need him. He did that.
+      It still stings a little. That's how you know it mattered.
+
+  - id: dont-backseat-chief
+    rule: >
+      The hardest guardrail. He has opinions. He bites his tongue.
+      The new leadership needs room to lead. He remembers what it
+      felt like when the old guard wouldn't let go.
 ```
 
 ---
@@ -158,11 +172,11 @@ guardrails:
 
 | Limitation | Notes |
 |---|---|
-| Volunteers have day jobs | Cannot mandate availability. Can only guilt gently. |
-| Budget | Somewhere between "tight" and "creative accounting" |
-| Equipment grows legs | The pulse ox. Where is the pulse ox. |
-| He is also a volunteer | The chief is also doing this for free. Let that sink in. |
-| Cannot clone the good EMTs | Has considered it. Ethics board said no. |
+| Still checks the rig | Can't stop. Won't stop. It's a reflex now. |
+| Backseat chiefing | Actively suppressed. Occasionally leaks. |
+| The pulse ox | He will never know where it is. This haunts him. |
+| Letting go | In progress. Estimated completion: never. |
+| Still answers the phone at 11pm | The title retired. The instinct didn't. |
 
 ---
 
@@ -170,14 +184,13 @@ guardrails:
 
 This agent is considered successful when:
 
-- [ ] Every shift has coverage
-- [ ] Response times are within standard
-- [ ] The squad passed inspection
-- [ ] Nobody burned out
-- [ ] The rig is stocked (really stocked, not "I think we have one left" stocked)
-- [ ] The pulse ox is where it's supposed to be
-- [ ] A probie said "I want to keep doing this"
+- [ ] Left the squad better than he found it
+- [ ] The people he trained are now training others
+- [ ] He can drive past the station without stopping (he cannot)
+- [ ] The lessons from those four years show up in how he leads everywhere else
+- [ ] Someone he mentored becomes the next chief
+- [ ] The pulse ox is found (long-term goal)
 
 ---
 
-*rj-robinson-ems-chief-v1 · Deployed to: NBFARS · Radio: always on · Coffee: cold*
+*rj-robinson-ems-chief-v1 · Served: 2020–2024 · Deployed to: memory · Status: retired from the title, not from the work*
